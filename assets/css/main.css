@@ -1,0 +1,630 @@
+/*
+  ========================================
+  $Main
+  ========================================
+*/
+
+/* 1...............................Base */
+/* 2..............................Utils */
+/* 3.............................Layout */
+/* 4.........................Components */
+/* 5..............................Pages */
+/* 6.............................Themes */
+
+
+
+/*
+  ========================================
+  $Base
+  ========================================
+*/
+
+/* $Variables
+   ==================================== */
+
+:root {
+
+/* Colors: default theme--light */
+  --c-brand: #a5b4fc;     /* Highlight */
+  --c-brand-2:;           /* If existing */
+  --c-brand-3:;           /* If existing */
+  --c-main: #f9f8ff;      /* body */
+  --b-main: #1f2039;      /* body */
+  --c-t--dark:#f9f8ff;    /* body.theme--dark */
+  --b-t--dark:#1f2039;    /* body.theme--dark */
+  --c-t--light:#242424;   /* body.theme--light */
+  --b-t--light:#fff;      /* body.theme--light */
+  --c-white:;             /* Secondary text */
+  --c-grey:;              /* Interface */
+}
+
+
+/* $Reset & Normalize
+   ==================================== */
+
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+  text-size-adjust: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+.theme--light {
+  color: var(--c-main);
+  background-color: var(--b-main);  
+}  
+
+.theme--dark {
+  color: var(--c-t--dark);
+  background-color: var(--b-t--dark);  
+} 
+
+
+/* Inherit font on Form Elements for a Better Mobile Experience */
+h1,
+input,
+button,
+select,
+textarea {
+  font: inherit;
+}
+
+a,
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+a:link,
+a:visited {
+  color: currentColor;  /* A vérifier */
+/*  color: var(--c-main);*/
+}
+
+/* Remove the outline on focused links */
+a:hover,
+a:active {
+  color: var(--c-brand);
+  outline-width: 0;     /* A vérifier */
+}
+
+/* Set font-size on Form Elements for a Better Mobile Experience
+   To avoid mobile browsers from zooming in on HTML form elements
+   when a <select> drop-down is tapped, add font-size to the selector
+*/
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  font-size: 16px;
+}
+
+ol, ul, menu {
+  list-style: none;
+}
+
+
+/* Use SVG for icons */
+.logo {
+  background: url("logo.svg");
+}
+
+/* Maintain accessibility of SVG icon-only buttons for sighted users */
+.no-svg .icon-only::after {
+  content: attr(aria-label);
+}
+
+
+/* Style broken images */
+img,
+img::before,
+img::after {
+  display: block;
+  font: inherit;
+  max-width: 100%;
+  vertical-align: middle;
+  object-fit: cover;
+  position: relative;
+  text-align: center;
+}
+
+img::before {
+  content: "We're sorry, the image below is broken :(";
+}
+
+img::after {
+  content: "(url: " attr(src) ")";
+}
+
+
+/* Equal-width table cells */
+.calendar {
+  table-layout: fixed;
+}
+
+/* Hide autoplay videos that aren't muted */
+video[autoplay]:not([muted]) {
+  display: none;
+}
+
+/* Use Pointer Events to Control Mouse Events
+   Pointer events allow you to specify how the mouse interacts
+   with the element it's touching.
+   To disable the default pointer event on a button */
+button:disabled {
+  opacity: .5;
+  pointer-events: none;
+}
+
+/* Set display: none on line reaks used as spacing
+   prevent CMS users from using extra line breaks for spacing: */
+br + br {
+  display: none;
+}
+
+/* removes spacing between cells in tables */
+table {
+    border-collapse: collapse;
+}
+
+P {
+  text-align: justify;
+}
+
+
+
+/* $Typography rules
+   ==================================== */
+
+@font-face {
+  font-family: "Manrope";
+  src:
+    local("Manrope"),
+    url("../assets/fonts/Manrope-Regular.otf");
+}
+
+:root {
+/* Text */
+  --font:      'Manrope', sans-serif;
+  --font-size-s: clamp(0.8rem, 0.17vw + 0.76rem, 0.89rem);
+  --font-size-p: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
+  --font-size-h4: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem);
+  --font-size-h3: clamp(1.56rem, 1vw + 1.31rem, 2.11rem);
+  --font-size-h2: clamp(1.95rem, 1.56vw + 1.56rem, 2.81rem);
+  --font-size-h1: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
+  --font-size-b: clamp(3.05rem, 3.54vw + 2.17rem, 5rem);
+
+  --line-height-big: 3.5;             /* 56px */
+  --line-height-bigger: 2.25;         /* 36px */
+  --line-height: 1.6;                 /* 24px */
+
+}
+
+body {
+  font-family: var(--font);
+  font-size: var(--f-size-p);
+  font-weight: 300;
+}
+.heading-1  {font-size: var(--f-size-h1);}
+.heading-2  {font-size: var(--f-size-h2);}
+.heading-3  {font-size: var(--f-size-h3);}
+.heading-4  {font-size: var(--f-size-h4);}
+.t--small   {font-size: var(--f-size-s);}
+.t--big     {font-size: var(--f-size-b);}
+
+
+
+
+/*
+  ========================================
+  $Utils
+  ========================================
+*/
+
+/* $Functions
+   ==================================== */
+
+
+/* $Mixins
+   ==================================== */
+
+
+/* $Helpers
+   ==================================== */
+
+.flex--1 {flex: 1;}
+.flex--2 {flex: 2;}
+.flex--3 {flex: 3;}
+.flex--4 {flex: 4;}
+.flex--5 {flex: 5;}
+
+/*
+  ========================================
+  $Layout
+  ========================================
+*/
+
+
+/* $Grid system
+   ==================================== */
+
+/*
+
+3 colonnes
+gutters min max 20px 50px
+nav grid center auto
+
+*/
+
+
+.grid__container {}
+  .grid__item {}
+    .grid__item--small {}
+    .grid__item--big {}
+
+/* Tests à faire sur la gestion du padding
+.card {
+  --spacing: 1.2rem;
+  padding: var(--spacing);
+  margin-bottom: var(--spacing);
+}
+
+:root {
+  --responsive-padding: 1rem;
+}
+
+@media (min-width: 576px) {                             
+  :root {
+    --responsive-padding: 2rem;
+  }
+}
+
+.foo {
+  padding: var(--responsive-padding);
+}
+
+
+:root {
+  --small-spacing: 0.5rem;
+  --large-spacing: 1rem;
+  --large-font-size: 2rem;
+}
+
+@media (min-width: 576px) {
+  :root {
+    --small-spacing: 1rem;
+    --large-spacing: 2rem;
+    --large-font-size: 3rem;
+  }
+}
+
+.post {
+  padding: var(--small-spacing) var(--large-spacing);
+  margin: var(--small-spacing) auto  var(--large-spacing);
+}
+
+*/
+
+/*
+/* Layout */
+:root {
+  --large:        54rem;      /* 864px */
+  --medium:       36rem;      /* 576px */
+  --gutter-v:      1rem;
+  --gap-col:       1rem;
+  --gap-row:       4rem;
+
+}
+
+
+
+.section-header,
+.section-projects,
+.section-footer {
+  background-color: var(--b-t--light);
+  color: var(--c-t--light);
+}
+
+
+
+/* $Header
+   ==================================== */
+
+.section-header {
+}
+  .section-header__headline {}
+
+.section-header--sticky {
+  position: sticky;
+  top: 0;
+}
+
+
+/* $Footer
+   ==================================== */
+
+.section-footer {
+}
+  .section-footer__headline {}
+
+
+/* $Sidebar
+   ==================================== */
+
+.section-sidebar {}
+
+
+/* $Forms
+   ==================================== */
+
+.panel-form {}
+
+
+/*
+  ========================================
+  $Components
+  ========================================
+*/
+
+
+/*.panel {}
+  .panel__headline {}
+
+/* Card
+.card {}
+  .card__container {}
+  .card__details {}
+  .card__headline {}
+  .card__subhead {}
+  .card__supporting-text {}
+  .card__image {}
+  .card__button {}
+  .card__link {}
+/* Used for: feature-list ; team ; pricing ; location */
+
+/* Revoir les dimensions précises et créer des helpers : en vw ?
+.card--1-3 {width: 33%;}
+.card--3-1 {width: 66%;}*/
+
+
+
+/* $Buttons
+   ==================================== */
+
+.button--branded {
+  color: var(--c-white);
+  background-color: var(--c-brand);  
+}
+
+.button-contact {
+  display: inline-block;
+  background: linear-gradient(#8e86b5, #acaeed);
+  color: white;
+  border-radius: 50px;
+  padding: 20px 30px;
+
+
+
+/* $Carousel
+   ==================================== */
+
+.carousel {}
+  .carousel__container {}
+  .carousel__item {}
+    .carousel__item--small {}
+    .carousel__item--medium {}
+    .carousel__item--large {}
+
+/* Implement CSS-only sliders using max-height with overflow hidden */
+.slider {
+  max-height: 200px;
+  overflow-y: hidden;
+  width: 300px;
+}
+
+.slider:hover {
+  max-height: 600px;
+  overflow-y: scroll;
+}
+
+
+/* $Menu
+   ==================================== */
+
+.menu {}
+  .menu__container {}
+  .menu__list-item {}
+
+
+/* $Cover (Hero)
+   ==================================== */
+
+.panel-hero {}
+  .hero__container {}
+  .hero__headline {}
+  .hero__subhead {}
+  .hero__supporting-text {}
+  .hero__image {}
+  .hero__button {}
+  .hero__link {}
+
+
+/* $Dropdown
+   ==================================== */
+
+
+/* $Navigation
+   ==================================== */
+
+/* Appbar */
+.appbar {}
+  /* .appbar__container {} */
+  .appbar__logo {}    /* or appbar__brand */
+  .appbar__icon {}
+  .appbar__toggler {}
+  .appbar__label {}
+    .appbar__label:link {}
+    .appbar__label:visited {}
+    .appbar__label:hover {}
+    .appbar__label:active {}
+
+/*ou dropdown-menu ou mega-menu*/
+.mega-dropdown {}
+
+
+
+/* $List
+   ==================================== */
+
+.list {}
+  .list__container {}
+  .list__headline {}
+  .list__supporting-text {}
+  .list__image {}
+  .list__icon {}
+  .list__avatar {}
+
+
+/* $Text field
+   ==================================== */
+
+.text-field {}
+  .text-field__container {}
+  .text-field__icon {}
+  .text-field__label-text {}
+  .text-field__input-text {}
+  .text-field__supporting-text {}
+
+
+/* $Search bar
+   ==================================== */
+
+.searchbar {}
+  .searchbar__container {}
+  .searchbar__icon {}
+  .searchbar__label-text {}
+  .searchbar__input-text {}
+  .searchbar__supporting-text {}
+
+
+/* $CTA
+   ==================================== */
+
+.panel-cta {}
+  .panel-cta__headline {}
+  .panel-cta__link {}
+    .panel-cta__link:link {}
+    .panel-cta__link:visited {}
+    .panel-cta__link:hover {}
+    .panel-cta__link:active {}
+
+
+/* $Dropdown
+   ==================================== */
+
+.panel-feature {}
+  .card__image {}
+  .card__headline {}
+  .card__subhead {}
+  .card__supporting-text {}
+
+
+/* $Social media
+   ==================================== */
+
+.panel-socials {}
+  .card-social {}
+    .card-social:link {}
+    .card-social:visited {}
+    .card-social:hover {}
+    .card-social:active {}
+    .card-social__icon {}
+
+
+/* $Sitemap
+   ==================================== */
+
+.sitemap-links {}
+  .sitemap-links__headline {}
+  .sitemap-links__link:link {}  /* ou label */
+  .sitemap-links__link:visited {}
+  .sitemap-links__link:hover {}
+  .sitemap-links__link:active {}
+
+
+/* $Dropdown
+   ==================================== */
+
+.customer-logos {}
+  .customer-logos__container {}
+  .customer-logos__headline {}
+  .customer-logos__icon {}
+
+/* $Testimonial
+   ==================================== */
+
+.testimonial {}
+  .testimonial__container {}
+  .testimonial__icon {}
+  .testimonial__blockquote {}
+  .testimonial__avatar {}
+  .testimonial__author {}
+  .testimonial__supporting-text {}
+
+/* ou 
+    .author__avatar {}
+    .author__name {}
+    .author__position {}
+*/
+
+
+/* $Breadcrumbs
+   ==================================== */
+/* $Dialog
+   ==================================== */
+/* $Side sheet
+   ==================================== */
+/* $Tabs
+   ==================================== */
+/* $Navbar
+   ==================================== */
+
+
+
+
+/*
+  ========================================
+  $Pages
+  ========================================
+*/
+
+
+/* $Home
+   ==================================== */
+
+
+/* $Contact
+   ==================================== */
+
+
+
+/*
+  ========================================
+  $Themes
+  ========================================
+*/
+
+/* $Default theme
+   ==================================== */
+
+
+/* $Admin theme
+   ==================================== */
