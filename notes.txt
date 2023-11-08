@@ -1,0 +1,45 @@
+flex-column en mobile
+
+
+
+
+Différence par rapport à la maquette
+intégration en mobile first
+ajout d'un point de rupture à 600px
+rectification de l'espacement du logo dans le footer
+rectification de l'espacement du titre Portraits dans la page Portfolio
+Harmonisation des déclarations de padding
+fix icons footer dans portfolio
+
+1 seul point de rupture à min 996 px
+tarifs masqués avant
+bug titre portraits
+
+indication de l apge active dans la navigation
+modifiction du fonctionnment de l'ffich ds imgs du portfolio
+= 1 commit par modifiction
+
+1 branche par page
+1 branche par module
+Détailler liste
+
+Première version stable sur master
+Puis branches
+
+header et footer : padding 20px 20px
+puis 20px 50px
+1,25 rem min
+
+colonne centrale max-width 1000px
+
+portrait en première position en mobile
+
+
+Poids initial des médias : 7,95 Mo
+Page d'accueil : 1,07 Mo => 42,5 Ko (webp) ou 325 Ko avec un back-up PNG
+Page portfolio : 6,88 Mo => 1,63 Mo (webp)
++ créer un format small de preview et un big on clic
+width: 800px
+Renaming pictures harmoniation > image-n
+
+

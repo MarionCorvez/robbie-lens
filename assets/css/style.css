@@ -1,0 +1,326 @@
+/*
+  ========================================
+  $Main
+  ========================================
+*/
+
+/* 1...............................Base */
+/* 2..............................Utils */
+/* 3.............................Layout */
+/* 4.........................Components */
+/* 5..............................Pages */
+/* 6.............................Themes */
+
+
+
+/*
+  ========================================
+  $Base
+  ========================================
+*/
+
+/* $Variables
+   ==================================== */
+
+:root {
+
+/* Colors: default--theme--dark */
+  --c-brand: #a5b4fc;     /* Highlight & headings */
+  --c-main: #f9f8ff;      /* body */
+  --b-main: #1f2039;      /* body */
+/* Colors: theme--light */
+  --c-t--light:#242424;   /* header & footer */
+  --b-t--light:#fff;      /* header & footer */
+
+}
+
+
+/* $Reset & Normalize
+   ==================================== */
+
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+  text-size-adjust: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: var(--c-main);
+  background-color: var(--b-main);  
+} 
+
+/* Inherit font on Form Elements for a Better Mobile Experience */
+h1,
+input,
+button,
+select,
+textarea {
+  font: inherit;
+}
+
+a,
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+a:link,
+a:visited {
+  color: var(--c-t--light);
+}
+
+/* Remove the outline on focused links */
+a:hover,
+a:active,
+a.active {
+  color: var(--c-brand);
+}
+
+
+/* $Typography rules
+   ==================================== */
+
+@font-face {
+  font-family: "Manrope";
+  src:
+    local("Manrope Regular"),
+    url("../assets/fonts/Manrope-Regular.otf");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src:
+    local("Montserrat-Regular"),
+    url("../assets/fonts/Montserrat-Regular.ttf");
+}
+
+
+
+
+/*
+  ========================================
+  $Utils
+  ========================================
+*/
+
+/* $Functions
+   ==================================== */
+
+
+/* $Mixins
+   ==================================== */
+
+
+/* $Helpers
+   ==================================== */
+
+ /* Light theme */
+.theme--light {
+	color: var(--c-t--light);
+	background-color: var(--b-t--light);
+}
+
+
+
+/*
+  ========================================
+  $Layout
+  ========================================
+*/
+
+
+/* $Global
+   ==================================== */
+
+/* header & footer */
+.screen--large {
+  padding: clamp(1.5rem, 1.75vw, 1.75rem) clamp(1rem, 3vw, 3rem);
+}
+
+/* main content */
+.screen--main {
+	max-width: 65rem;
+}
+
+/* contact form */
+.screen--small {
+	max-width: 32rem;
+}
+
+
+.grid--auto {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(25rem, 100%), 1fr));
+}
+
+
+
+
+/* $Grid system
+   ==================================== */
+
+/* $Header
+   ==================================== */
+
+.section-header,
+.section-footer,
+.navbar {
+	display: flex;
+	justify-content: space-between;
+  align-items: center;
+}
+
+	.footer__logo {
+		margin-right: auto;
+	}
+	.footer__social:last-child {
+		padding-left: 1.8rem;
+	}	
+
+.navbar {
+	gap: 0 clamp(3rem, 5vw, 8rem);		
+}
+
+/* Mobile first takes more code */
+@media screen and (max-width: 35rem) {
+	.section-header,
+	.section-footer,
+	.navbar {
+		flex-direction: column;
+	}
+		.navbar a {
+			margin-top: 1.25rem;
+		}
+		.footer__logo {
+			margin-right: 0;
+		}
+		.footer__social {
+			margin-top: 2.15rem;
+		}
+		.footer__social:last-child {
+			padding-left: 0;
+		}
+}
+
+
+
+/* $Footer
+   ==================================== */
+
+.section-footer {
+}
+  .section-footer__headline {}
+
+
+/* $Sidebar
+   ==================================== */
+
+.section-sidebar {}
+
+
+/* $Forms
+   ==================================== */
+
+.panel-form {}
+
+
+
+/*
+  ========================================
+  $Components
+  ========================================
+*/
+
+/* $Tables
+   ==================================== */
+
+table {
+  border: 1px solid #A5B4FC;;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr,
+table td,
+table th {
+  border: 1px solid #A5B4FC;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
