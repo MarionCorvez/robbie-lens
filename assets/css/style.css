@@ -33,13 +33,13 @@
   --b-t--light:#fff;      /* header & footer */
 
 /* Text */
-  --font-size-s: clamp(0.8rem, 0.17vw + 0.76rem, 0.89rem);
-  --font-size-p: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
-  --font-size-h4: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem);
-  --font-size-h3: clamp(1.56rem, 1vw + 1.31rem, 2.11rem);
-  --font-size-h2: clamp(1.95rem, 1.56vw + 1.56rem, 2.81rem);
-  --font-size-h1: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
-  --font-size-b: clamp(3.05rem, 3.54vw + 2.17rem, 5rem);
+  --f-size-s: clamp(0.8rem, 0.17vw + 0.76rem, 0.89rem);
+  --f-size-p: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
+  --f-size-h4: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem);
+  --f-size-h3: clamp(1.56rem, 1vw + 1.31rem, 2.11rem);
+  --f-size-h2: clamp(1.95rem, 1.56vw + 1.56rem, 2.81rem);
+  --f-size-h1: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
+  --f-size-b: clamp(3.05rem, 3.54vw + 2.17rem, 5rem);
 
 }
 
@@ -51,6 +51,7 @@ html {
   box-sizing: border-box;
   font-size: 100%;
   text-size-adjust: none;
+  scroll-behavior: smooth;
 }
 
 *,
@@ -81,16 +82,17 @@ button {
   cursor: pointer;
 }
 
-a:link,
-a:visited {
+.navbar a:link,
+.navbar a:visited {
+  border-bottom: 1px solid transparent;
   color: var(--c-t--light);
 }
 
 /* Remove the outline on focused links */
-a:hover,
-a:active,
-a.active {
-  color: var(--c-brand);
+.navbar a:hover,
+.navbar a:active,
+.navbar a.active {
+	border-bottom: 1px solid var(--b-main);
 }
 
 
@@ -115,6 +117,10 @@ a.active {
 body {
 	font-family: 'Manrope', sans-serif;
   font-size: var(--f-size-p);
+}
+
+.button-contact {
+	font-family: 'Montserrat', sans-serif;
 }
 
 
@@ -195,9 +201,18 @@ body {
 .grid--auto {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+	gap: 2rem;
 }
 
 
+.panel-cover {
+	padding: clamp(4rem, 7vw, 9rem) 0;
+}
+
+.section-services,
+.section-studio {
+	padding-bottom: 5.3rem;
+}
 
 
 /* $Grid system
@@ -208,23 +223,31 @@ body {
 
 .section-header,
 .section-footer,
-.navbar {
+.navbar,
+.panel-cover {
 	display: flex;
 	justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 /* Mobile first takes more code */
 @media screen and (width <= 35rem) {
+	.social {
+		display: flex;
+	}
 	.section-header,
 	.section-footer,
-	.navbar {
+	.navbar,
+	.panel-cover,
+	.social {
 		flex-direction: column;
 	}
-		.navbar a {
+		.navbar a,
+		.button-contact {
 			margin-top: 1.25rem;
 		}
-		.footer__social {
+		.social__item {
 			margin-top: 2.15rem;
 		}
 }
@@ -233,10 +256,7 @@ body {
 	.navbar {
 		gap: 0 clamp(3rem, 5vw, 8rem);		
 	}
-		.footer__logo {
-			margin-right: auto;
-		}
-		.footer__social:last-child {
+		.social__item:last-child {
 			padding-left: 1.8rem;
 		}	
 }
@@ -269,76 +289,84 @@ body {
   ========================================
 */
 
-/* $Tables
+/* $Cover
+   ==================================== */
+
+
+
+
+
+
+/* $Button
+   ==================================== */
+
+.button-contact {
+	display: inline-block;		/* test pour bouton form */
+	text-transform: uppercase;
+	padding: 1.3125rem 2.375rem;
+	background: linear-gradient(180deg, #8E86B5 0%, #ACAEED 100%);
+	border-radius: 3.125rem;
+}
+
+.button-contact:hover,
+.button-contact:focus {
+	background: linear-gradient(180deg, #696484 0%, #8788BA 100%);
+}
+
+
+
+/* $Services
+   ==================================== */
+
+.card-services {
+	border-bottom: 1px var(--c-brand) solid;
+	border-right: 1px var(--c-brand) solid;
+	padding: 0 2rem 3rem 0;
+}
+
+
+/* $Table
    ==================================== */
 
 table {
-  border: 1px solid #A5B4FC;;
   border-collapse: collapse;
-  margin: 0;
-  padding: 0;
   width: 100%;
   table-layout: fixed;
 }
 
-
 table caption {
-  font-size: 1.5em;
-  margin: .5em 0 .75em;
+  margin-bottom: 2.38rem;
+  text-align: left;
+}
+
+table th {
+	color: #fff;
+	padding: 0.5rem;
+}
+
+table td {
+  border: 1px solid #A5B4FC;
 }
 
 table tr,
-table td,
-table th {
-  border: 1px solid #A5B4FC;
-  padding: .35em;
-}
-
-table th,
 table td {
-  padding: .625em;
-  text-align: center;
+  padding: clamp(1rem, 2vw, 2.75rem);
 }
 
-table th {
-  font-size: .85em;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-@media screen and (max-width: 600px) {
-  table {
-    border: 0;
-  }
-
-  table caption {
-    font-size: 1.3em;
-  }
-  
+@media screen and (width <= 44rem) {
   table thead {
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
     overflow: hidden;
-    padding: 0;
     position: absolute;
     width: 1px;
   }
-  
   table tr {
-    border-bottom: 3px solid #ddd;
     display: block;
-    margin-bottom: .625em;
+    margin-bottom: 1.5rem;
   }
-  
   table td {
-    border-bottom: 1px solid #ddd;
     display: block;
-    font-size: .8em;
     text-align: right;
   }
-  
   table td::before {
     /*
     * aria-label has no advantage, it won't be read inside a table
@@ -346,11 +374,19 @@ table th {
     */
     content: attr(data-label);
     float: left;
-    font-weight: bold;
-    text-transform: uppercase;
+    font-size: var(--f-size-h4);
   }
-  
-  table td:last-child {
-    border-bottom: 0;
-  }
+ }
+
+@media screen and (width >= 44rem) {
+ table,
+ table tr {
+  border: 1px solid #A5B4FC;
+	}
+	table td {
+		line-height: 2rem;
+	}
 }
+
+
+
