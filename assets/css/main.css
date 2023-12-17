@@ -178,121 +178,97 @@ P {
 }
 
 
+body {
+  font-size: var(--f-size-p);
+  line-height: var(--l-height);
+}
+
+body,
+ {
+	font-family: 'Manrope', sans-serif;
+}
+
+[class*="heading"],
+.button-contact {
+	font-family: 'Montserrat', sans-serif;
+}
+
 
 /* Manrope
 
-small-notes / pricing notes
+-s 0.75rem 		= 12px		notes - texte tableau
+-p 1rem				= 16px		p - titre tableau
+-h4 1.125rem 	= 18px		label - nav - prices
+-h3 1.25rem		= 20px		services
+-h2 2.1875rem = 35px		projets - studio pro
+-h1 3.4375rem = 55px		cover
+
+
+s = 0.625rem
+> small-notes / pricing notes
 color: #F9F8FF;
 font-family: Manrope;
-font-size: 0.625rem;	=> 0.75rem / 12px
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+
+p = 0.875rem
+> texte services
+
+1rem
+> emphase prix
 
 p--dark page-about
 color: #F9F8FF;
-font-family: Manrope;
 font-size: 1rem;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+
+h2 paysages portraits
+color: #000;
+font-size: 1.875rem;
 
 h-services--dark page-about
 color: #F9F8FF;
-font-family: Manrope;
 font-size: 1.25rem;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
 
 h--light / portfolio-page > paysages
 color: #000;
-font-family: Manrope;
 font-size: 1.875rem;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
 
 Nav--light
 color: #242424;
-font-family: Manrope;
 font-size: 1.125rem;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
 
 label form
 color: #F9F8FF;
-font-family: Manrope;
 font-size: 1.125rem;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
 
 p--dark
 color: #F9F8FF;
-font-family: Manrope;
 font-size: 1.25rem;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
 
 
 */
 
 /* Montserrat
 
-
 h1
 color: #A5B4FC;
-font-family: Montserrat;
 font-size: 3.4375rem;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
 
-
-color: #A5B4FC;
-font-family: Montserrat;
-font-size: 3.4375rem;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-
-
-h2--light
+h2--light / studio pro / home / contact
 color: #1F2039;
 text-align: center;
-font-family: Montserrat;
 font-size: 2.1875rem;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
 
 h2--dark / page-pricing > studio pro
 color: #A5B4FC;
 text-align: center;
-font-family: Montserrat;
 font-size: 2.1875rem;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
 
 h3--dark / pricing items
 color: #A5B4FC;
-font-family: Montserrat;
 font-size: 1.25rem;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
 
 button
 color: #FFF;
-font-family: Montserrat;
 font-size: 1.0625rem;			/*!
-font-style: normal;
-font-weight: 400;
-line-height: normal;
 text-transform: uppercase;
 
 harmoniser tous les paragraphes à 1rem
@@ -300,43 +276,9 @@ harmoniser tous les paragraphes à 1rem
 
 titre tableau tarifs
 color: #FFF;
-font-family: Montserrat;
 font-size: 1rem;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-
 
 */
-
-
-
-
-:root {
-/* Text */
-  --font:      'Manrope', sans-serif;
-  --font-size-s: clamp(0.8rem, 0.17vw + 0.76rem, 0.89rem);
-  --font-size-p: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
-  --font-size-h4: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem);
-  --font-size-h3: clamp(1.56rem, 1vw + 1.31rem, 2.11rem);
-  --font-size-h2: clamp(1.95rem, 1.56vw + 1.56rem, 2.81rem);
-  --font-size-h1: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
-  --font-size-b: clamp(3.05rem, 3.54vw + 2.17rem, 5rem);
-
-}
-
-body {
-  font-family: var(--font);
-  font-size: var(--f-size-p);
-  font-weight: 300;
-}
-.heading-1  {font-size: var(--f-size-h1);}
-.heading-2  {font-size: var(--f-size-h2);}
-.heading-3  {font-size: var(--f-size-h3);}
-.heading-4  {font-size: var(--f-size-h4);}
-.t--small   {font-size: var(--f-size-s);}
-.t--big     {font-size: var(--f-size-b);}
-
 
 
 

@@ -33,13 +33,30 @@
   --b-t--light:#fff;      /* header & footer */
 
 /* Text */
-	--f-size-s: 	clamp(0.7rem, 0.09vw + 0.68rem, 0.75rem);
-	--f-size-p: 	clamp(0.88rem, 0.23vw + 0.82rem, 1rem);
-	--f-size-h4: 	clamp(1.09rem, 0.43vw + 0.98rem, 1.33rem);
-	--f-size-h3: 	clamp(1.37rem, 0.74vw + 1.18rem, 1.78rem);
-	--f-size-h2: 	clamp(1.71rem, 1.2vw + 1.41rem, 2.37rem);
-	--f-size-h1: 	clamp(2.14rem, 1.86vw + 1.67rem, 3.16rem);
-	--f-size-b: 	clamp(2.67rem, 2.8vw + 1.97rem, 4.21rem);
+	--f-size-s: clamp(0.63rem, 0.23vw + 0.57rem, 0.75rem);
+	--f-size-p: clamp(0.78rem, 0.4vw + 0.68rem, 1rem);
+	--f-size-h4: clamp(1rem, 0.23vw + 0.94rem, 1.13rem);
+	--f-size-h3: clamp(1.13rem, 0.23vw + 1.07rem, 1.25rem);
+	--f-size-h2: clamp(1.88rem, 1.14vw + 1.59rem, 2.5rem);
+	--f-size-h1: clamp(2.88rem, 1.14vw + 2.59rem, 3.5rem);
+	--l-height--s:  1;
+	--l-height:   	1.4;
+	--l-height--b: 	2;
+
+/* Layout */
+  --l--small:     16rem;    /* Minimun width */
+  --l--large:     82rem;    /* Max width for large screen */
+  --l--main:      65rem;    /* Max width for main screen */
+  --l--inner:     34rem;    /* Max width for inner screen */
+  --l--item:      17rem;    /* Minimum width for an item */
+  --l--margin:    90%;      /* External margin */
+  --l--margin-s:  75%;      /* Small ext margin */
+
+/* Gutters */
+  --gap--s:   clamp(1rem, 2vmax, 2rem);
+  --gap:      clamp(2rem, 4vmax, 4rem);
+  --gap--b:   clamp(3rem, 6vmax, 6rem);
+  --gap--xb:  clamp(4rem, 7vw, 9rem);
 
 }
 
@@ -76,23 +93,61 @@ textarea {
   font: inherit;
 }
 
+/* Use Pointer Events to Control Mouse Events
+   Pointer events allow you to specify how the mouse interacts
+   with the element it's touching.
+   To disable the default pointer event on a button */
+button:disabled {
+  opacity: .5;
+  pointer-events: none;
+}
+
 a,
 button {
   all: unset;
   cursor: pointer;
 }
 
-.navbar a:link,
-.navbar a:visited {
-  border-bottom: 1px solid transparent;
-  color: var(--c-t--light);
+/* Set font-size on Form Elements for a Better Mobile Experience
+   To avoid mobile browsers from zooming in on HTML form elements
+   when a <select> drop-down is tapped, add font-size to the selector
+*/
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  font-size: var(--f-size-p);
 }
 
-/* Remove the outline on focused links */
-.navbar a:hover,
-.navbar a:active,
-.navbar a.active {
-	border-bottom: 1px solid var(--b-main);
+ol, ul, menu {
+  list-style: none;
+}
+
+/* Style broken images */
+img,
+img::before,
+img::after {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+  vertical-align: middle;
+  position: relative;
+  font: inherit;
+  text-align: center;
+}
+
+img::before {
+  content: "We're sorry, the image below is broken :(";
+}
+
+img::after {
+  content: "(url: " attr(src) ")";
+}
+
+/* Set display: none on line reaks used as spacing
+   prevent CMS users from using extra line breaks for spacing: */
+br + br {
+  display: none;
 }
 
 
@@ -117,22 +172,21 @@ button {
 body {
 	font-family: 'Manrope', sans-serif;
   font-size: var(--f-size-p);
+  line-height: var(--l-height);
 }
 
+[class*="heading"],
 .button-contact {
 	font-family: 'Montserrat', sans-serif;
 }
 
-.t--big     {font-size: var(--f-size-b);}
-.heading-1  {font-size: var(--f-size-h1);}
-.heading-2  {font-size: var(--f-size-h2);}
-.heading-3  {font-size: var(--f-size-h3);}
-.heading-4  {font-size: var(--f-size-h4);}
-.t--base	  {font-size: var(--f-size-p);}
 .t--small   {font-size: var(--f-size-s);}
-
-
-
+.t--base	  {font-size: var(--f-size-p);}
+.heading-4  {font-size: var(--f-size-h4);}
+.heading-3  {font-size: var(--f-size-h3);}
+.heading-2  {font-size: var(--f-size-h2);}
+.heading-1  {font-size: var(--f-size-h1);}
+.t--big     {font-size: var(--f-size-b);}
 
 
 
@@ -168,65 +222,64 @@ body {
 */
 
 
-/* $Global
+/* $Global layout
    ==================================== */
 
-/* header & footer */
+[class*="screen"] {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .screen--large {
-  padding: clamp(1.5rem, 1.75vw, 1.75rem) clamp(1rem, 3vw, 3rem);
+  width: clamp(var(--l--small), var(--l--margin), var(--l--large));
 }
 
-/* main content */
 .screen--main {
-	display: grid;
-	grid-template-columns: 
-		minmax(1.75rem, 1fr) 
-		minmax(0, 65rem) 
-		minmax(1.75rem, 1fr);
+  width: clamp(var(--l--small), var(--l--margin), var(--l--main));
 }
 
-	.item--full {
-		grid-column: 1 / -1;
-	}
-
-	.item--main {
-		grid-column: 2 / -2;
-	}
-
-
-/* contact form */
-.screen--small {
-	max-width: 32rem;
+.screen--inner {
+  width: clamp(var(--l--small), var(--l--margin-s), var(--l--inner));  
 }
 
+/* $Gutters
+   ==================================== */
 
-.grid--auto {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
-	gap: 2rem;
-}
+.outer--s     {margin-top: var(--gap--s);}		/* 1 - 2 */
+.outer        {margin-top: var(--gap);}				/* 2 - 4 */
+.outer--b     {margin-top: var(--gap--b);}		/* 3 - 6 */
 
-
-.panel-cover {
-	padding: clamp(4rem, 7vw, 9rem) 0;
-}
-
-.section-services,
-.section-studio {
-	padding-bottom: 5.3rem;
-}
+.inner--s     {padding-top: var(--gap--s);}
+.inner        {padding-top: var(--gap);}
+.inner--b     {padding-top: var(--gap--b);}
 
 
 /* $Grid system
    ==================================== */
 
+[class*="grid"] {
+  display: grid;
+}
+
+.grid--auto {
+	grid-template-columns: repeat(auto-fit, minmax(min(var(--l--item), 100%), 1fr));
+	gap: var(--gap--b);
+}
+
+
+/* $Flexbox
+   ==================================== */
+
+
+
 /* $Header
    ==================================== */
 
 .section-header,
-.section-footer,
 .navbar,
-.panel-cover {
+.section-cover,
+.section-footer,
+.social {
 	display: flex;
 	justify-content: space-between;
   align-items: center;
@@ -235,28 +288,28 @@ body {
 
 /* Mobile first takes more code */
 @media screen and (width <= 35rem) {
-	.social {
-		display: flex;
-	}
 	.section-header,
 	.section-footer,
 	.navbar,
-	.panel-cover,
+	.section-cover,
 	.social {
 		flex-direction: column;
 	}
 		.navbar a,
 		.button-contact {
-			margin-top: 1.25rem;
+			margin-top: var(--gap--s);
 		}
 		.social__item {
-			margin-top: 2.15rem;
+			margin-top: var(--gap);
 		}
 }
 
 @media screen and (width >= 35rem) {
 	.navbar {
 		gap: 0 clamp(3rem, 5vw, 8rem);		
+	}
+	.social {
+		flex-direction: row;
 	}
 		.social__item:last-child {
 			padding-left: 1.8rem;
@@ -267,9 +320,10 @@ body {
 /* $Footer
    ==================================== */
 
+.section-header,
 .section-footer {
+	padding: var(--gap--s) 0;
 }
-  .section-footer__headline {}
 
 
 /* $Sidebar
@@ -282,49 +336,6 @@ body {
    ==================================== */
 
 .panel-form {}
-
-
-
-/*
-  ========================================
-  $Components
-  ========================================
-*/
-
-/* $Cover
-   ==================================== */
-
-
-
-
-
-
-/* $Button
-   ==================================== */
-
-.button-contact {
-	display: inline-block;		/* test pour bouton form */
-	text-transform: uppercase;
-	padding: 1.3125rem 2.375rem;
-	background: linear-gradient(180deg, #8E86B5 0%, #ACAEED 100%);
-	border-radius: 3.125rem;
-}
-
-.button-contact:hover,
-.button-contact:focus {
-	background: linear-gradient(180deg, #696484 0%, #8788BA 100%);
-}
-
-
-
-/* $Services
-   ==================================== */
-
-.card-services {
-	border-bottom: 1px var(--c-brand) solid;
-	border-right: 1px var(--c-brand) solid;
-	padding: 0 2rem 3rem 0;
-}
 
 
 /* $Table
@@ -348,6 +359,7 @@ table th {
 
 table td {
   border: 1px solid var(--c-brand);
+  text-align: center;
 }
 
 table tr,
@@ -386,9 +398,127 @@ table td {
   border: 1px solid var(--c-brand);
 	}
 	table td {
-		line-height: 2;
+		line-height: var(--l-height--b);
 	}
 }
 
 
 
+/*
+  ========================================
+  $Components
+  ========================================
+*/
+
+
+/* $Navigation
+   ==================================== */
+
+.navbar a:link,
+.navbar a:visited {
+  border-bottom: 1px solid transparent;
+  color: var(--c-t--light);
+}
+
+/* Remove the outline on focused links */
+.navbar a:hover,
+.navbar a:active,
+.navbar a.active {
+	border-bottom: 1px solid var(--b-main);
+}
+
+
+/* $Hero and cover
+   ==================================== */
+
+.section-hero {}
+
+.section-cover {
+	padding: var(--gap--xb) 0;
+}
+
+
+/* $Button
+   ==================================== */
+
+.button-contact {
+	display: inline-block;		/* test pour bouton form */
+	text-transform: uppercase;
+	padding: 1.3125rem 2.375rem;
+	background: linear-gradient(180deg, #8E86B5 0%, #ACAEED 100%);
+	border-radius: 3.125rem;
+}
+
+.button-contact:hover,
+.button-contact:focus {
+	background: linear-gradient(180deg, #696484 0%, #8788BA 100%);
+}
+
+
+
+/*
+  ========================================
+  $Pages
+  ========================================
+*/
+
+
+/* $Home
+   ==================================== */
+
+
+
+/* $Pricing
+   ==================================== */
+
+/* Services */
+.card-services {
+	border-bottom: 1px var(--c-brand) solid;
+	border-right: 1px var(--c-brand) solid;
+	padding-right: var(--gap--s);
+	padding-bottom: var(--gap);
+}
+
+
+/* $About
+   ==================================== */
+
+/* On screen--main, grid of 5 cols with a gap of 1.3rem
+	 Photos width: 12rem; height: 15rem;
+
+  grid-template-columns: repeat(5, 1fr);
+  ou repeat(5, minmax(0, 12rem))
+  à tester
+
+  grid-gap: 1.3rem;
+	option à tester : ;
+  grid-auto-rows: minmax(12rem, auto);
+
+ou 
+grid-template-columns: repeat(auto-fit, minmax(min(25rem, 100%), 1fr));
+
+
+item {
+	grid-column: 1 / 4;
+}
+voir si possible avec auto
+
+.title {
+	grid-column: 1 / 3;
+}
+
+.content,
+.content__cta {
+	grid-column: 2 / -2;
+}
+
+.content__cta {
+	centré
+}
+
+Pour le rectangle en fond, voir si le wrapper est la grid et le rectangle positionné en absolu à 4.5rem du top et 4.5rem à droite
+avec une largeur max qui serait la même que 3 items min et max (38rem)
+et visible en desktop et tablet à tester
+
+
+ */
