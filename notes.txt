@@ -1,6 +1,71 @@
-flex-column en mobile
+Master : header et footer
 
+Marges :
+mobile > full / 48px / 60px (form)
+tablet > full / 48px / 60px (form)
+desktop > full / 72px
 
+layout-full : 1040px + 250px = 1290px
+layout-content : 1040px
+layout-about : 668px
+layout-form: 525px
+
+header 48 => 72px
+haut / bas 18px
+
+Layout : 
+mobile 44px
+galerie 336px * 321px
+gap 22px (harmonisation)
+
+theme--light (default)
+background: #fff;
+color: #242424;
+
+theme--dark
+background: #1F2039;
+heading color: #A5B4FC;
+text color: #F9F8FF;
+
+Manrope :
+
+proposition :
+--f-size-s: 12px > 14px
+--f-size-p: 14px > 16px
+--f-size-m: 16px > 18px
+--f-size-l: 18px > 20px
+--f-size-b: 25px > 35px
+--f-size-xb: 28px > 55px
+
+--f-size-s: clamp(0.75rem, 0.23vw + 0.69rem, 0.88rem);
+--f-size-p: clamp(0.88rem, 0.23vw + 0.82rem, 1rem);
+--f-size-m: clamp(1rem, 0.23vw + 0.94rem, 1.13rem);
+--f-size-l: clamp(1.13rem, 0.23vw + 1.07rem, 1.25rem);
+--f-size-b: clamp(1.56rem, 1.14vw + 1.28rem, 2.19rem);
+--f-size-xb: clamp(1.75rem, 3.07vw + 0.98rem, 3.44rem);
+
+pricing info : 12px > 14px
+normal : 14px > 16px
+= pricing details / tableau content 
+menu / contact__label / tableau heading : 16px > 18px
+about services / hero__content : 18px > 20px
+
+au lieu de : 
+about services 20px (desk seul)
+Menu : 18px > 18px
+hero__content : 16px > 20px ou 16 px (about page)
+contact__label : 18px > 18px
+pricing details : 14px > 14px
+pricing info 10px > 10px
+tableau heading 16px (desk)
+tableau content 14px (desk)
+
+Montserrat
+hp / hero h1 : 28px > 55px
+hp cta : 16px > 18px
+portfolio / contact h2 : 25px > 35px
+pricing h3 : 18px > 20px
+pricing prix 14px > 16px
 
 
 Différence par rapport à la maquette
@@ -18,13 +83,6 @@ bug titre portraits
 indication de l apge active dans la navigation
 modifiction du fonctionnment de l'ffich ds imgs du portfolio
 = 1 commit par modifiction
-
-1 branche par page
-1 branche par module
-Détailler liste
-
-Première version stable sur master
-Puis branches
 
 header et footer : padding 20px 20px
 puis 20px 50px
